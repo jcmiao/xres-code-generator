@@ -1,4 +1,3 @@
-#!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
 import os
@@ -178,7 +177,7 @@ def main():
     parser.add_option(
         "-t",
         "--tag",
-        action="store",
+        action="append",
         help="just generate message for tags",
         dest="tags",
         default=[])

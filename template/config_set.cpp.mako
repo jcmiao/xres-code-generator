@@ -451,7 +451,8 @@ ${loader.get_cpp_namespace_decl_begin()}
 %       endif
         idx = static_cast<size_t>(${idx_field.name});
 %   endfor
-        if (${code_index.name}_data_.size() > idx && ${code_index.name}_data_[idx]) {
+        //if (${code_index.name}_data_.size() > idx && ${code_index.name}_data_[idx]) {
+        if (${code_index.name}_data_.size() > idx) {
             return &${code_index.name}_data_[idx];
         }
 % else:
@@ -476,7 +477,8 @@ ${loader.get_cpp_namespace_decl_begin()}
         }
 
 % if code_index.is_vector():
-        if (${code_index.name}_data_.size() > idx && ${code_index.name}_data_[idx]) {
+        // if (${code_index.name}_data_.size() > idx && ${code_index.name}_data_[idx]) {
+        if (${code_index.name}_data_.size() > idx) {
             return &${code_index.name}_data_[idx];
         }
 

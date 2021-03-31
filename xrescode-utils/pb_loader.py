@@ -701,6 +701,7 @@ class PbMsg:
             return
         
         for loader in self.pb_msg.options.Extensions[ext.loader]:
+            print("--------------include_tags:{0} exclude_tags: {1} loader.tags: {2}".format(include_tags, exclude_tags, loader.tags))
             skip_message = False
             if exclude_tags:
                 for tag in exclude_tags:
@@ -712,6 +713,7 @@ class PbMsg:
             if include_tags:
                 skip_message = True
                 for tag in include_tags:
+                    print("tag:{0}".format(tag))
                     if tag in loader.tags:
                         skip_message = False
                         break
