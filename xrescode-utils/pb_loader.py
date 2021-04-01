@@ -179,6 +179,10 @@ def CppNamespaceEnd(context, arg):
     if ret:
         return ret[0:-1]
     return ret
+    
+@supports_caller
+def CppNamespace(context, arg):
+    return arg.replace(".", "::")
 
 @supports_caller
 def CppFullPath(context, arg):

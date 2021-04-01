@@ -237,7 +237,7 @@ ${pb_loader.CppNamespaceBegin(global_package)}
 #else
             const char *fmt, ...);
 #endif
-
+        static read_buffer_func_t get_default_buffer_loader() { return default_buffer_loader; }
     private:
         static bool default_buffer_loader(std::string&, const char* path);
         static bool default_version_loader(std::string&);
@@ -267,14 +267,14 @@ ${pb_loader.CppNamespaceEnd(global_package)} // ${global_package}
 
 
 #ifndef EXCEL_CONFIG_MANAGER_LOGFILENF
-#define EXCEL_CONFIG_MANAGER_LOGFILENF(lv, name) ::excel::config_manager::log_caller_info_t(lv, name, __FILE__, __LINE__, __FUNCTION__)
+#define EXCEL_CONFIG_MANAGER_LOGFILENF(lv, name) ::${pb_loader.CppNamespace(global_package)}::config_manager::log_caller_info_t(lv, name, __FILE__, __LINE__, __FUNCTION__)
 #endif
 
 
-#define EXCEL_CONFIG_MANAGER_LOGDEBUG(...) ::excel::config_manager::log(EXCEL_CONFIG_MANAGER_LOGFILENF(::excel::config_manager::log_level_t::LOG_LW_DEBUG, "DEBUG"),  __VA_ARGS__)
-#define EXCEL_CONFIG_MANAGER_LOGINFO(...) ::excel::config_manager::log(EXCEL_CONFIG_MANAGER_LOGFILENF(::excel::config_manager::log_level_t::LOG_LW_INFO, "INFO"),  __VA_ARGS__)
-#define EXCEL_CONFIG_MANAGER_LOGWARNING(...) ::excel::config_manager::log(EXCEL_CONFIG_MANAGER_LOGFILENF(::excel::config_manager::log_level_t::LOG_LW_WARNING, "WARNING"), __VA_ARGS__)
-#define EXCEL_CONFIG_MANAGER_LOGERROR(...) ::excel::config_manager::log(EXCEL_CONFIG_MANAGER_LOGFILENF(::excel::config_manager::log_level_t::LOG_LW_ERROR, "ERROR"), __VA_ARGS__)
+#define EXCEL_CONFIG_MANAGER_LOGDEBUG(...) ::${pb_loader.CppNamespace(global_package)}::config_manager::log(EXCEL_CONFIG_MANAGER_LOGFILENF(::${pb_loader.CppNamespace(global_package)}::config_manager::log_level_t::LOG_LW_DEBUG, "DEBUG"),  __VA_ARGS__)
+#define EXCEL_CONFIG_MANAGER_LOGINFO(...) ::${pb_loader.CppNamespace(global_package)}::config_manager::log(EXCEL_CONFIG_MANAGER_LOGFILENF(::${pb_loader.CppNamespace(global_package)}::config_manager::log_level_t::LOG_LW_INFO, "INFO"),  __VA_ARGS__)
+#define EXCEL_CONFIG_MANAGER_LOGWARNING(...) ::${pb_loader.CppNamespace(global_package)}::config_manager::log(EXCEL_CONFIG_MANAGER_LOGFILENF(::${pb_loader.CppNamespace(global_package)}::config_manager::log_level_t::LOG_LW_WARNING, "WARNING"), __VA_ARGS__)
+#define EXCEL_CONFIG_MANAGER_LOGERROR(...) ::${pb_loader.CppNamespace(global_package)}::config_manager::log(EXCEL_CONFIG_MANAGER_LOGFILENF(::${pb_loader.CppNamespace(global_package)}::config_manager::log_level_t::LOG_LW_ERROR, "ERROR"), __VA_ARGS__)
 
 
 #endif  // CONFIG_EXCEL_CONFIG_MANAGER_H
